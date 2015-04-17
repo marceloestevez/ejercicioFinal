@@ -28,6 +28,27 @@ OSEK OSEK {
       SCHEDULE = NON;
    };
 
+    TASK PeriodicTask {
+      PRIORITY = 2;
+      ACTIVATION = 1;
+      STACK = 512;
+      TYPE = EXTENDED;
+      SCHEDULE = NON;
+      RESOURCE = POSIXR;
+      EVENT = POSIXE;
+   }
+
+   ALARM ActivatePeriodicTask {
+      COUNTER = HardwareCounter;
+      ACTION = ACTIVATETASK {
+         TASK = PeriodicTask;
+      }
+   }
+   
+   
+   
+   
+   
    COUNTER HardwareCounter {
       MAXALLOWEDVALUE = 1000;
       TICKSPERBASE = 1;

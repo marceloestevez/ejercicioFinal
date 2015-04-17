@@ -96,6 +96,9 @@ extern void leds_init(void)
 
 extern void leds_toggle(uint8_t mask)
 {
+   ciaaPOSIX_read(fd_out, &outputs, 1);
+      outputs ^= 0x20;
+      ciaaPOSIX_write(fd_out, &outputs, 1);
 
 }
 

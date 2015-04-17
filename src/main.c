@@ -147,6 +147,26 @@ TASK(InitTask)
    TerminateTask();
 }
 
+TASK(PeriodicTask)
+{
+   uint8 outputs;
+
+
+   /* blink output */
+   ciaaPOSIX_read(fd_out, &outputs, 1);
+   outputs ^= 0x20;
+   ciaaPOSIX_write(fd_out, &outputs, 1);
+
+   /* terminate task */
+   TerminateTask();
+}
+
+
+
+
+
+
+
 /** @} doxygen end group definition */
 /** @} doxygen end group definition */
 /*==================[end of file]============================================*/
